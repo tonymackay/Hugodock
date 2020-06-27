@@ -1,5 +1,5 @@
 FROM golang:1.13-alpine AS build
-ARG VERSION=v0.73.0
+ARG GIT_TAG=v0.73.0
 ENV CGO_ENABLED=0
 ENV GOOS=linux
 ENV GO111MODULE=on
@@ -7,7 +7,7 @@ RUN apk add --no-cache git \
  && apk add --no-cache ca-certificates
 
 WORKDIR /go/src/github.com/gohugoio/hugo
-RUN git clone https://github.com/gohugoio/hugo . && git checkout ${VERSION}
+RUN git clone https://github.com/gohugoio/hugo . && git checkout ${GIT_TAG}
 RUN go get github.com/magefile/mage
 RUN mage install
 
