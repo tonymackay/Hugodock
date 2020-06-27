@@ -15,7 +15,7 @@ fi
 if [ "$ARG" == "build" ]; then
   echo "build Docker image"
   docker build -t "$DOCKER_ID/$APP_NAME" --build-arg GIT_TAG=$GIT_TAG .
-  echo "create tag $VERSION"
+  echo "create tag $IMG_TAG"
   docker tag "$DOCKER_ID/$APP_NAME" "$DOCKER_ID/$APP_NAME:$IMG_TAG"
 fi
 
